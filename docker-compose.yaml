@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  main:
+    image: p0vidl0/bull-arena:1.0.0
+    restart: always
+    volumes:
+      - ./config.json:/opt/arena/config.json
+    logging:
+      driver: "json-file"
+      options:
+        labels-regex: "^.+"
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.bull-arena-ssl.rule=Host(`bull-arena.host.com`)"
+        - "traefik.http.routers.bull-arena-ssl.entrypoints=websecure"
+        - "traefik.http.routers.bull-arena-ssl.tls=true"
+        - "traefik.http.routers.bull-arena-ssl.tls.certresolver=myresolver"
+        - "traefik.http.routers.bull-arena-ssl.tls.domains[0].main=bull-arena.host.com"
+        - "traefik.http.routers.bull-arena-ssl.service=bull-arena-ssl"
+        - "traefik.http.routers.bull-arena-ssl.middlewares=bull-arena-basicauth"
+        - "traefik.http.services.bull-arena-ssl.loadBalancer.server.port=4567"
+        - "traefik.http.middlewares.bull-arena-basicauth.basicauth.users=admin:$$apr1$$zX0MUIR5$$NRRp/dRYDoXMushqCZHBe0"
+        - "traefik.http.middlewares.bull-arena-basicauth.basicauth.removeheader=true"
+    container_name: bull-arena
+    command:
+      - node
+      - index.js
+

@@ -2,8 +2,8 @@
   "name": "docker-arena",
   "private": true,
   "main": "index.js",
-  "version": "0.0.0",
-  "description": "The official docker application for bee-queue arena.",
+  "version": "1.0.0",
+  "description": "The application for bee-queue arena.",
   "scripts": {
     "build": "docker build . -t docker-arena",
     "ci": "npm run lint",
@@ -22,6 +22,10 @@
     "queue"
   ],
   "author": "Eli Skeggs <eli@mixmax.com> (https://mixmax.com)",
+  "contributors": [
+    "Eli Skeggs <eli@mixmax.com> (https://mixmax.com)",
+    "Alex Kalashnikov"
+  ],
   "license": "MIT",
   "dependencies": {
     "bee-queue": "^1.5.0",

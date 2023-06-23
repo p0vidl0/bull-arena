@@ -8,6 +8,23 @@
       "redis": {
         "url": "redis://localhost:6379/0"
       }
+    },
+    {
+      "type": "bullmq",
+      "name": "my-queue",
+      "prefix": "my-bullmq",
+      "hostId": "Secure Redis",
+      "redis": {
+        "db": "3",
+        "port": "30000",
+        "host": "secure.redis.host.com",
+        "password": "SECRET",
+        "username": "USERNAME",
+        "tls": {
+          "rejectUnauthorized": false,
+          "ca": "-----BEGIN CERTIFICATE-----\nMIIDHTCCAgWgAwKoZIhvcNJeAz2OfRxfoSF4TpAQELIBAgIUAkNMzbLcA6owDQYJ\nBQAwGA1UEHjEEcMBoAwwTSUJNIRNsb3VkIEhdGF...aRFFFgsLDAYT8kMtD2rjaDVoma9Axg\n-----END CERTIFICATE-----\n"
+        }
+      }
     }
   ]
 }
