@@ -1,0 +1,13 @@
+{
+  "queues": [
+    {
+      "type": "bullmq",
+      "name": "webhook",
+      "prefix": "my-bullmq",
+      "hostId": "localhost",
+      "redis": {
+        "url": "redis://localhost:6379/0"
+      }
+    }
+  ]
+}

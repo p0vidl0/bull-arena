@@ -2,7 +2,7 @@ const Arena = require('bull-arena');
 
 let config;
 try {
-  config = require('./index.json');
+  config = require('./config.json');
 } catch (err) {
   if (err.code !== 'MODULE_NOT_FOUND') {
     throw err;
@@ -20,6 +20,6 @@ Arena({
     return Bee || (Bee = require('bee-queue'));
   },
   get BullMQ() {
-    return BullMQ || (BullMQ = require('bullmq'));
+    return BullMQ || (BullMQ = require('bullmq').Queue);
   },
 });
